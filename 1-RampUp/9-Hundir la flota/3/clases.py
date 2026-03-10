@@ -29,7 +29,6 @@ class Tablero:
                     colocado = True
 
     def _puede_colocar(self, fila, col, eslora, orientacion):
-        # Comprueba que el barco no se salga del tablero ni pise otro barco
         for i in range(eslora):
             f, c = fila, col
             if orientacion == 'N': f -= i
@@ -39,7 +38,7 @@ class Tablero:
 
             if f < 0 or f >= self.tamaño or c < 0 or c >= self.tamaño:
                 return False
-            if self.tablero[f][c] != var.AGUA:
+            if self.tablero[f][c] != var.agua:   # <-- CORREGIDO: var.AGUA → var.agua
                 return False
         return True
 
@@ -51,3 +50,19 @@ class Tablero:
             elif orientacion == 'E': c += i
             elif orientacion == 'O': c -= i
             self.tablero[f][c] = var.barco
+
+    # NUEVO: método disparar que recibe unas coordenadas y actualiza el tablero
+    def disparar(self, fila, col):
+        casilla = self.tablero[fila][col]
+        
+        if casilla in (var.tocado, var.fallo):
+            return None                          # ya disparado aquí antes
+        elif casilla == var.barco:
+            self.tablero[fila][col] = var.tocado
+            self.tablero_disparos[fila][col] = var.tocado
+            self.vidas -= 1
+            return True                          # tocado
+        else:
+            self.tablero[fila][col] = var.fallo
+            self.tablero_disparos[fila][col] = var.fallo
+            return False                         # agua
