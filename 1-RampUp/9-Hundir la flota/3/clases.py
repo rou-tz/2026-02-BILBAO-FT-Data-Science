@@ -1,5 +1,4 @@
 # clases.py
-import random
 import variables as var
 
 class Tablero:
@@ -7,62 +6,95 @@ class Tablero:
         self.jugador = jugador
         self.tamaño = var.tamaño
         self.barcos = var.barcos
-        # Vidas totales = suma de todas las esloras
         self.vidas = sum(self.barcos.values())
         
-        # Tablero propio (donde están tus barcos y los impactos que recibes)
         self.tablero = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
-        
-        # Tablero de disparos (lo que ves del enemigo, empieza vacío)
         self.tablero_disparos = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
 
     def inicializar_tablero(self):
-        for nombre, eslora in self.barcos.items():
-            colocado = False
-            while not colocado:
-                fila = random.randint(0, self.tamaño - 1)
-                col = random.randint(0, self.tamaño - 1)
-                orientacion = random.choice(['N', 'S', 'E', 'O'])
-                
-                if self._puede_colocar(fila, col, eslora, orientacion):
-                    self._colocar_barco(fila, col, eslora, orientacion)
-                    colocado = True
+        t = self.tablero
 
-    def _puede_colocar(self, fila, col, eslora, orientacion):
-        for i in range(eslora):
-            f, c = fila, col
-            if orientacion == 'N': f -= i
-            elif orientacion == 'S': f += i
-            elif orientacion == 'E': c += i
-            elif orientacion == 'O': c -= i
+        if self.jugador == "Jugador 1":
+            # mini_1
+            t[0][0] = var.barco
+            # mini_2
+            t[0][2] = var.barco
+            # mini_3
+            t[0][4] = var.barco
+            # mini_4
+            t[0][6] = var.barco
 
-            if f < 0 or f >= self.tamaño or c < 0 or c >= self.tamaño:
-                return False
-            if self.tablero[f][c] != var.agua:   # <-- CORREGIDO: var.AGUA → var.agua
-                return False
-        return True
+            # semi_1
+            t[2][0] = var.barco
+            t[2][1] = var.barco
+            # semi_2
+            t[2][4] = var.barco
+            t[2][5] = var.barco
+            # semi_3
+            t[2][7] = var.barco
+            t[2][8] = var.barco
 
-    def _colocar_barco(self, fila, col, eslora, orientacion):
-        for i in range(eslora):
-            f, c = fila, col
-            if orientacion == 'N': f -= i
-            elif orientacion == 'S': f += i
-            elif orientacion == 'E': c += i
-            elif orientacion == 'O': c -= i
-            self.tablero[f][c] = var.barco
+            # grande_1
+            t[4][0] = var.barco
+            t[4][1] = var.barco
+            t[4][2] = var.barco
+            # grande_2
+            t[4][5] = var.barco
+            t[4][6] = var.barco
+            t[4][7] = var.barco
 
-    # NUEVO: método disparar que recibe unas coordenadas y actualiza el tablero
+            # gigante
+            t[6][0] = var.barco
+            t[6][1] = var.barco
+            t[6][2] = var.barco
+            t[6][3] = var.barco
+
+        else:  # Máquina
+            # mini_1
+            t[0][1] = var.barco
+            # mini_2
+            t[0][3] = var.barco
+            # mini_3
+            t[0][5] = var.barco
+            # mini_4
+            t[0][7] = var.barco
+
+            # semi_1
+            t[2][0] = var.barco
+            t[2][1] = var.barco
+            # semi_2
+            t[2][4] = var.barco
+            t[2][5] = var.barco
+            # semi_3
+            t[2][7] = var.barco
+            t[2][8] = var.barco
+
+            # grande_1
+            t[5][0] = var.barco
+            t[5][1] = var.barco
+            t[5][2] = var.barco
+            # grande_2
+            t[5][5] = var.barco
+            t[5][6] = var.barco
+            t[5][7] = var.barco
+
+            # gigante
+            t[8][3] = var.barco
+            t[8][4] = var.barco
+            t[8][5] = var.barco
+            t[8][6] = var.barco
+
     def disparar(self, fila, col):
         casilla = self.tablero[fila][col]
         
         if casilla in (var.tocado, var.fallo):
-            return None                          # ya disparado aquí antes
+            return None
         elif casilla == var.barco:
             self.tablero[fila][col] = var.tocado
             self.tablero_disparos[fila][col] = var.tocado
             self.vidas -= 1
-            return True                          # tocado
+            return True
         else:
             self.tablero[fila][col] = var.fallo
             self.tablero_disparos[fila][col] = var.fallo
-            return False                         # agua
+            return False

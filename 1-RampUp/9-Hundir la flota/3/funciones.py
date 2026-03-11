@@ -1,11 +1,11 @@
 # funciones.py
 import variables as var
 import random
-from clases import Tablero
+
 
 
 def imprimir_instrucciones():
-    print("=" * 50)
+    print("~" * 100)
     print("""  
         |   |              |o         |             ,---.|         |         
         |---|.   .,---.,---|.,---.    |    ,---.    |__. |    ,---.|--- ,---.
@@ -18,7 +18,7 @@ def imprimir_instrucciones():
     print("2. Juegas contra la Máquina. Tus barcos se colocarán de forma automática.")
     print(f"3. Los símbolos son: Agua ({var.agua}), Barco ({var.barco}), Tocado ({var.tocado}), Fallo ({var.fallo}).")
     print("¡¡Que gane el mejor!!")
-    print("=" * 50 + "\n")
+    print("=" * 100 + "\n")
     
     
 
@@ -55,12 +55,12 @@ def turno_jugador(tablero_maquina):
         resultado = tablero_maquina.disparar(fila, col)
 
         if resultado is None:
-            print("⚠️  Ya habías disparado ahí. Elige otra coordenada.")
+            print("Ya habías disparado ahí. Elige otra coordenada.")
         elif resultado:
-            print(f"\n💥 ¡TOCADO en ({fila}, {col})! ¡Vuelves a tirar!")
+            print(f"\n¡TOCADO en ({fila}, {col})! ¡Vuelves a tirar!")
             return True
         else:
-            print(f"\n💦 Agua en ({fila}, {col}). Fin de tu turno.")
+            print(f"\n¡Ohh Agua! en ({fila}, {col}). Fin de tu turno.")
             return False
 
 

@@ -6,6 +6,7 @@ def main():
     func.imprimir_instrucciones()
     
     while True:
+        print("Introduce una moneda de 1€ para jugar")
         empezar = int(input("Escribe '1' para jugar o '0' para salir: "))
         if empezar == 1:
             break
