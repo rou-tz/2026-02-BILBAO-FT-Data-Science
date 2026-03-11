@@ -2,6 +2,9 @@
 from clases import Tablero
 import funciones as func
 
+""" 
+Esta es la funcion principal que llama a todas las funciones
+"""
 def main():
     func.imprimir_instrucciones()
     
@@ -16,42 +19,43 @@ def main():
         else:
             print("Opción no válida. Escribe 1 o 0.")
    
-    # Inicialización de tableros
+    #Inicializamos los dos tableros
     tablero_jugador = Tablero("Jugador 1")
     tablero_jugador.inicializar_tablero()
 
-    tablero_maquina = Tablero("Máquina")
+    tablero_maquina = Tablero("Maquina")
     tablero_maquina.inicializar_tablero()
 
     turno_jugador = True
 
-    # Bucle principal del juego — igual que el while del notebook pero con dos jugadores
+    #El bucle comienza siempre que el turno sea True
     while True:
 
-        # Comprobamos si alguien ha ganado antes de cada turno
+        #Comprobamos las vidas que son el numero total que ocupan los barcos, 20 en total
         if tablero_jugador.vidas == 0:
             print("\n😢 Todos tus barcos se han hundido. ¡HAS PERDIDO!")
             break
-        if tablero_maquina.vidas == 0:
+        elif tablero_maquina.vidas == 0:
             print("\n🎉 ¡Has hundido toda la flota enemiga! ¡HAS GANADO!")
             break
-
-        if turno_jugador:
-            print("\n" + "=" * 40)
-            print("          ¡TU TURNO!")
-            print("=" * 40)
+        
+        #Empezamos con el turno del jugador 1
+        elif turno_jugador:
+            print("\n" + "=" * 50)
+            print("              ¡TU TURNO!")
+            print("=" * 50)
             func.imprimir_tablero(tablero_jugador.tablero, "Tus posiciones")
             func.imprimir_tablero(tablero_maquina.tablero_disparos, "Tablero de disparo")
 
-            # Si acierta (True) sigue siendo su turno, igual que en el notebook
+            #Devuelve un true si acierta y puede seguir tirando en ese caso.
             turno_jugador = func.turno_jugador(tablero_maquina)
 
         else:
-            print("\n" + "=" * 40)
+            print("\n" + "=" * 50)
             print("       TURNO DE LA MÁQUINA")
-            print("=" * 40)
+            print("=" * 50)
 
-            # Si la máquina acierta (True) sigue siendo su turno
+            #Al añadir el not nos aseguramos que si acierta, devuelve un False y puede volver a tirar
             turno_jugador = not func.turno_maquina(tablero_jugador)
 
     # Al acabar, mostramos los tableros finales
@@ -60,5 +64,6 @@ def main():
     func.imprimir_tablero(tablero_maquina.tablero, "Tablero de la máquina")
 
 
+#Esto ejecuta el juego directamente
 if __name__ == "__main__":
     main()

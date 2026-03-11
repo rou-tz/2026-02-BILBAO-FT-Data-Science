@@ -1,6 +1,9 @@
 # clases.py
 import variables as var
 
+""" 
+Creamos una clase tablero y defino los atributos de la clase: Jugador, tamaño, barcos, las vidas y los tableros
+"""
 class Tablero:
     def __init__(self, jugador):
         self.jugador = jugador
@@ -8,9 +11,12 @@ class Tablero:
         self.barcos = var.barcos
         self.vidas = sum(self.barcos.values())
         
+        #Aqui se definen los tableros, el tablero seran tanto para jugador como para maquina
+        #El Tablero disparos es para que el usuario vea donde 
         self.tablero = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
         self.tablero_disparos = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
-
+    
+    #Aqui colocamos los barcos de manera manual con dos coordenadas X e Y. 
     def inicializar_tablero(self):
         t = self.tablero
 
@@ -18,9 +24,9 @@ class Tablero:
             # mini_1
             t[0][0] = var.barco
             # mini_2
-            t[0][2] = var.barco
+            t[9][2] = var.barco
             # mini_3
-            t[0][4] = var.barco
+            t[7][8] = var.barco
             # mini_4
             t[0][6] = var.barco
 
@@ -31,8 +37,8 @@ class Tablero:
             t[2][4] = var.barco
             t[2][5] = var.barco
             # semi_3
-            t[2][7] = var.barco
-            t[2][8] = var.barco
+            t[3][7] = var.barco
+            t[4][7] = var.barco
 
             # grande_1
             t[4][0] = var.barco
@@ -40,8 +46,8 @@ class Tablero:
             t[4][2] = var.barco
             # grande_2
             t[4][5] = var.barco
-            t[4][6] = var.barco
-            t[4][7] = var.barco
+            t[5][5] = var.barco
+            t[6][5] = var.barco
 
             # gigante
             t[6][0] = var.barco
@@ -49,7 +55,7 @@ class Tablero:
             t[6][2] = var.barco
             t[6][3] = var.barco
 
-        else:  # Máquina
+        else: #Los barcos de la maquina
             # mini_1
             t[0][1] = var.barco
             # mini_2
@@ -84,6 +90,8 @@ class Tablero:
             t[8][5] = var.barco
             t[8][6] = var.barco
 
+    #Por ultimo la funcion de disparar, que si las coordenadas metidas por el usuario o por la maquina coinciden,
+    # cambian el valor de la fila
     def disparar(self, fila, col):
         casilla = self.tablero[fila][col]
         

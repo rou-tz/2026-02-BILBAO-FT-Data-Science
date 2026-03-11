@@ -19,18 +19,26 @@ def imprimir_instrucciones():
     print(f"3. Los símbolos son: Agua ({var.agua}), Barco ({var.barco}), Tocado ({var.tocado}), Fallo ({var.fallo}).")
     print("¡¡Que gane el mejor!!")
     print("=" * 100 + "\n")
+   
+   
     
-    
-
-
+    """
+    Esta funcion imprime el tablero y le añade las posiciones de 0 a 9, le entran dos inputs, tablero y titulo.
+    I
+    """
 def imprimir_tablero(tablero, titulo):
-    print(f"--- {titulo} ---")
-    print("  " + " ".join([str(i) for i in range(var.tamaño)]))
+    print(f"      --- {titulo} ---")
+    print("     " + "  ".join([str(i) for i in range(var.tamaño)]))
+    print("  " + "---" * 11)
     for i, fila in enumerate(tablero):
-        print(f"{i} " + " ".join(fila))
+        print(f"{i} |  " + "  ".join(fila))
     print()
 
-
+    
+    """
+    Esta funcion sirve para verificar si la coordenada es correcta o no.
+    Tiene dentro un bucle que devuelve el valor si es un numero entre 0 y 9
+    """
 def coordenada(nombre):
     while True:
         try:
@@ -67,7 +75,7 @@ def turno_jugador(tablero_maquina):
 def turno_maquina(tablero_jugador):
     """
     La máquina dispara en una posición aleatoria del tablero del jugador.
-    Devuelve True si tocó, False si agua.
+    Devuelve True si ha acertado, False si es agua.
     """
     while True:
         fila = random.randint(0, var.tamaño - 1)
@@ -77,8 +85,8 @@ def turno_maquina(tablero_jugador):
         if resultado is None:
             continue            # ya disparó ahí, intenta otra
         elif resultado:
-            print(f"💥 ¡La máquina te ha dado en ({fila}, {col})! Vuelve a tirar la máquina.")
+            print(f"¡La máquina te ha dado en ({fila}, {col})! Vuelve a tirar la máquina.")
             return True
         else:
-            print(f"💦 La máquina disparó al agua en ({fila}, {col}).")
+            print(f" La máquina disparó al agua en ({fila}, {col}).")
             return False
