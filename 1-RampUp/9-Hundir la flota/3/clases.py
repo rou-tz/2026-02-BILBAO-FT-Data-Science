@@ -11,8 +11,8 @@ class Tablero:
         self.barcos = var.barcos
         self.vidas = sum(self.barcos.values())
         
-        #Aqui se definen los tableros, el tablero seran tanto para jugador como para maquina
-        #El Tablero disparos es para que el usuario vea donde 
+        #Aqui se definen los tableros, el tablero seran tanto para jugador como para la maquina
+        #El Tablero disparos es para que el usuario vea donde va disparando al tablero de la maquina
         self.tablero = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
         self.tablero_disparos = [[var.agua for i in range(self.tamaño)] for i in range(self.tamaño)]
     

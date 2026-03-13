@@ -15,7 +15,7 @@ def imprimir_instrucciones():
     print("~" * 100)
     print("Instrucciones:")
     print("1. El tablero es de 10x10.")
-    print("2. Juegas contra la Máquina. Tus barcos se colocarán de forma automática.")
+    print("2. Juegas contra la Máquina. Tus barcos estarán colocados previamente.")
     print(f"3. Los símbolos son: Agua ({var.agua}), Barco ({var.barco}), Tocado ({var.tocado}), Fallo ({var.fallo}).")
     print("¡¡Que gane el mejor!!")
     print("=" * 100 + "\n")
