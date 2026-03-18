@@ -1,0 +1,112 @@
+{
+  "organic_insights_audience": [
+    {
+      "title": "",
+      "media_map_data": {
+        
+      },
+      "string_map_data": {
+        "Intervalo de fechas": {
+          "href": "",
+          "value": "Dec 16 - Mar 15",
+          "timestamp": 0
+        },
+        "Seguidores": {
+          "href": "",
+          "value": "2,638",
+          "timestamp": 0
+        },
+        "Diferencia de seguidores": {
+          "href": "",
+          "value": "+15.1% vs Sep 17 - Dec 15",
+          "timestamp": 0
+        },
+        "Empezaron a seguirte": {
+          "href": "",
+          "value": "462",
+          "timestamp": 0
+        },
+        "Dejaron de seguirte": {
+          "href": "",
+          "value": "115",
+          "timestamp": 0
+        },
+        "Seguidores totales": {
+          "href": "",
+          "value": "347",
+          "timestamp": 0
+        },
+        "Porcentaje de seguidores por ciudad": {
+          "href": "",
+          "value": "Bilbao: 24.7%, Baracaldo: 8.6%, Sestao: 6.3%, Basauri: 4.4%, Vitoria-Gasteiz: 4.4%",
+          "timestamp": 0
+        },
+        "Porcentaje de seguidores por pa\u00c3\u00ads": {
+          "href": "",
+          "value": "Spain: 98.2%, Italy: 0.6%, France: 0.2%, Argentina: 0.1%, United Kingdom: 0.1%",
+          "timestamp": 0
+        },
+        "Porcentaje de seguidores de todos los sexos por edad": {
+          "href": "",
+          "value": "13-17: 1.3%, 18-24: 21.2%, 25-34: 42.1%, 35-44: 19.4%, 45-54: 11.6%, 55-64: 3%, 65+: 1%",
+          "timestamp": 0
+        },
+        "Porcentaje de seguidores hombres por edad": {
+          "href": "",
+          "value": "13-17: 1.2%, 18-24: 20.4%, 25-34: 42.3%, 35-44: 20.3%, 45-54: 11.7%, 55-64: 3%, 65+: 0.6%",
+          "timestamp": 0
+        },
+        "Porcentaje de seguidoras mujeres por edad": {
+          "href": "",
+          "value": "13-17: 1.2%, 18-24: 18.5%, 25-34: 40.1%, 35-44: 21.9%, 45-54: 13.4%, 55-64: 3.3%, 65+: 1.3%",
+          "timestamp": 0
+        },
+        "Porcentaje total de seguidores para hombres": {
+          "href": "",
+          "value": "49.1%",
+          "timestamp": 0
+        },
+        "Porcentaje total de seguidoras mujeres": {
+          "href": "",
+          "value": "50.8%",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del lunes": {
+          "href": "",
+          "value": "2,363",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del martes": {
+          "href": "",
+          "value": "2,374",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del mi\u00c3\u00a9rcoles": {
+          "href": "",
+          "value": "2,375",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del jueves": {
+          "href": "",
+          "value": "2,383",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del viernes": {
+          "href": "",
+          "value": "2,381",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del s\u00c3\u00a1bado": {
+          "href": "",
+          "value": "2,395",
+          "timestamp": 0
+        },
+        "Actividad de seguidores del domingo": {
+          "href": "",
+          "value": "2,371",
+          "timestamp": 0
+        }
+      }
+    }
+  ]
+}

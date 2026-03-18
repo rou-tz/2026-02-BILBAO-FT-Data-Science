@@ -1,0 +1,62 @@
+{
+  "organic_insights_reach": [
+    {
+      "title": "",
+      "media_map_data": {
+        
+      },
+      "string_map_data": {
+        "Intervalo de fechas": {
+          "href": "",
+          "value": "Dec 16 - Mar 15",
+          "timestamp": 0
+        },
+        "Cuentas alcanzadas": {
+          "href": "",
+          "value": "50577",
+          "timestamp": 0
+        },
+        "Diferencia de cuentas alcanzadas": {
+          "href": "",
+          "value": "-32.7% vs Sep 17 - Dec 15",
+          "timestamp": 0
+        },
+        "Seguidores": {
+          "href": "",
+          "value": "4.7%",
+          "timestamp": 0
+        },
+        "No seguidores": {
+          "href": "",
+          "value": "95.3%",
+          "timestamp": 0
+        },
+        "Diferencia de no seguidores": {
+          "href": "",
+          "value": "You reached -33.4% more accounts that weren't following you compared to Sep 17 - Dec 15.",
+          "timestamp": 0
+        },
+        "Impresiones": {
+          "href": "",
+          "value": "305,304",
+          "timestamp": 0
+        },
+        "Diferencia de impresiones": {
+          "href": "",
+          "value": "-21.6%",
+          "timestamp": 0
+        },
+        "Visitas al perfil": {
+          "href": "",
+          "value": "6,193",
+          "timestamp": 0
+        },
+        "Diferencia de visitas al perfil": {
+          "href": "",
+          "value": "-8.7%",
+          "timestamp": 0
+        }
+      }
+    }
+  ]
+}
