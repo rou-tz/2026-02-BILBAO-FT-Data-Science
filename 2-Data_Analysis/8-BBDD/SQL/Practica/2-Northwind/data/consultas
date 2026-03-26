@@ -1,0 +1,148 @@
+SELECT Orders.OrderID, Customers.CompanyName, Orders.OrderDate
+FROM Customers
+        INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CompanyName;
+
+-- 1
+SELECT *
+FROM Customers
+        INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CompanyName;
+
+-- 2
+
+SELECT Orders.OrderID, Customers.CompanyName, Orders.OrderDate
+FROM Customers
+        LEFT OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CompanyName;
+
+-- 3
+
+SELECT Orders.OrderID, Customers.CompanyName, Orders.OrderDate
+FROM Customers
+        RIGHT LEFT OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CompanyName;
+
+-- 4
+SELECT Orders.OrderID, Customers.CompanyName, Orders.OrderDate
+FROM Orders
+        FULL OUTER JOIN Customers ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CompanyName;
+
+-- 5
+SELECT Customers.CompanyName, COUNT(Orders.OrderID)
+FROM Customers
+        LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+WHERE Customers.Country = 'UK'
+GROUP BY Customers.CompanyName;
+
+-- 6
+SELECT Customers.CompanyName, strftime('%Y', Orders.OrderDate) as year, SUM([Order Details].Quantity)
+FROM Customers
+        INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+        INNER JOIN [Order Details] ON Orders.OrderId = [Order Details].OrderID
+WHERE Customers.Country = 'UK'
+GROUP BY Customers.CompanyName, year
+ORDER BY Customers.CompanyName, year;
+
+-- 7
+SELECT C.CompanyName AS [Company Name], 
+		strftime('%Y', O.OrderDate) AS [Year of Order], 
+		SUM( OD.Quantity ) AS [Total Quantity], 
+		SUM( OD.Quantity * OD.UnitPrice * (1-OD.Discount)) AS [Total Revenues]
+FROM Customers AS C
+	INNER JOIN Orders AS O ON C.CustomerID = O.CustomerID
+	INNER JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID
+WHERE C.Country = 'UK'
+GROUP BY C.CompanyName, strftime('%Y', O.OrderDate)
+ORDER BY C.CompanyName, strftime('%Y', O.OrderDate);
+
+-- 8
+INSERT INTO Suppliers(CompanyName, ContactName, Address, City, PostalCode, COuntry)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+-- 9
+UPDATE Suppliers
+SET Phone = '(0)2-953010'
+WHERE CompanyName = 'Cardinal';
+
+-- 10
+DELETE FROM Suppliers
+WHERE CompanyName = 'Cardinal';
+
+-- 11
+BEGIN TRANSACTION;
+
+UPDATE Customers
+SET Country = 'Greece';
+
+SELECT Country, *
+FROM Customers;
+
+ROLLBACK;
+
+SELECT Country, *
+FROM Customers;
+
+-- 12 Devuelve 0 por que no hay clientes que hayan hecho pedidos
+SELECT C.CustomerID,
+            C.CompanyName,
+            COUNT(O.OrderID) [Total Count of Orders]
+FROM Customers AS C
+        LEFT JOIN Orders AS O ON C.CustomerID = O.CustomerID
+GROUP BY C.CustomerID, C.CompanyName
+HAVING COUNT (O.OrderID) = 0;
+
+-- 13 Empieza por Ber
+SELECT * FROM Customers
+WHERE City LIKE'Ber%';
+--Contiene es
+SELECT * FROM Customers
+WHERE city LIKE '%es%';
+-- La segunda letra una e
+SELECT *
+FROM Customers
+WHERE Region LIKE '_e%';
+
+-- 14
+SELECT ROUND((UnitPrice * Quantity * (1- Discount)),2), *
+FROM [Order Details]
+WHERE OrderID = 10266;
+
+-- 15
+CREATE TEMP TABLE tempFinalPrices AS
+SELECT
+    O.OrderID,
+    SUM(ROUND((UnitPrice * Quantity * (1 - Discount)), 2)) AS [Final Price]
+FROM Orders 0
+        INNER JOIN [Order Details] OD ON O.OrderID = OD.OrderId
+GROUP BY O.OrderID;
+
+SELECT * FROM tempFinalPrices;
+
+DROP TABLE tempFinalPrices;
+
+-- 16
+SELECT C.CompanyName, C.Country, strftime('%Y', O.OrderDate) as year, SUM;
+
+-- 17
+SELECT CompanyName
+FROM Customers
+WHERE CustomerID = (SELECT CustomerID
+                    FROM Orders
+                    WHERE OrderId = 10290);
+
+-- 18
+SELECT CompanyName
+FROM Customers
+WHERE CustomerID = (SELECT CustomerID
+                    FROM Orders
+                    WHERE OrderDate BETWEEN '2016-01-01' AND '2016-12-31';
+                    
+-- 19
+CREATE VIEW [Current Product List] AS
+SELECT ProductID, ProductName
+FROM Products
+WHERE Discountinued=0;
+
+SELECT * FROM [Current Product List];
