@@ -23,6 +23,10 @@ SELECT FirstName || ' ' || LastName AS Nombre_Completo, Address, Email
 FROM employees
 WHERE title = 'Sales Support Agent';
 
+SELECT CONCAT(FirstName, ' ', LastName) AS Nombre_Completo, Address, Email
+FROM employees
+WHERE title = 'Sales Support Agent';
+
 --6
 SELECT DISTINCT BillingCountry
 FROM invoices;
